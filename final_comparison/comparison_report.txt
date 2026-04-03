@@ -1,0 +1,32 @@
+======================================================================
+  PIX2PIX IMPLEMENTATION COMPARISON REPORT
+  From-Scratch vs Official (pytorch-CycleGAN-and-pix2pix)
+======================================================================
+
+Dataset: CMP Facades (400 train, 100 val images)
+Training: 200 epochs, batch size 1, lr=0.0002, lambda_L1=100
+Architecture: U-Net Generator (54.4M params) + PatchGAN Discriminator (2.8M params)
+
+Metric             From Scratch        Official      Difference
+--------------------------------------------------------------
+L1                       0.1783          0.1841         -0.0058
+L2                       0.0532          0.0563         -0.0031
+PSNR                     12.98dB          12.79dB +         0.20dB
+--------------------------------------------------------------
+
+INTERPRETATION:
+  Our from-scratch implementation achieves comparable L1 error
+  to the official implementation (within 15%).
+  PSNR values are very close (within 1 dB).
+
+KEY DIFFERENCES:
+  - Both use identical architectures (U-Net + PatchGAN)
+  - Official uses instance norm option; ours uses batch norm
+  - Small differences from random initialization and data augmentation
+  - Official has additional features (learning rate decay, etc.)
+
+COMPARISON IMAGES:
+  Each image shows: [Input Labels | Ours | Official | Ground Truth]
+  Saved to: D:\DHRUVA_IITB\GNR Assignment 3\final_comparison/
+
+======================================================================
